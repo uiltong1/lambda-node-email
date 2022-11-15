@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "nodemon": "^2.0.20",
     "serverless-localstack": "^1.0.1"
   },
   "dependencies": {
@@ -8,5 +9,11 @@
     "joi-translation-pt-br": "^0.0.6",
     "nodemailer": "^6.8.0",
     "serverless-event-body-option": "^1.2.0"
+  },
+  "scripts": {
+    "build": "serverless webpack --stage local",
+    "deploy": "serverless deploy --stage local",
+    "watch": "nodemon -w src -e '.*' -x 'npm run build'",
+    "start": "npm run deploy && npm run watch"
   }
 }
